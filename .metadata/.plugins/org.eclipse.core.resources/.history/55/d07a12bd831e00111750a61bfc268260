@@ -1,0 +1,11 @@
+package com.kh.run;
+
+public class LunchMenu {
+	
+	public void findLunchMenu() {
+		
+		System.out.println("---")
+		
+	}
+
+}

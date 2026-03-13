@@ -1,0 +1,17 @@
+package com.kh.first.Variable;
+
+public class Variable {
+
+	  public void Variable() {
+		 
+		  // 변수 : Memory 공간에 값을 저장하는 저장 공간
+		 
+		  String longFants = "긴바지";
+		  String shortFants = "짧은바지";
+		  
+		  
+		  System.out.println(longFants+shortFants);
+		  
+		  }
+	
+}
