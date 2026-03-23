@@ -9,7 +9,6 @@ public class RunLunchMenu {
 		LunchMenu l = new LunchMenu();
 		l.findLunchMenu();
 		l.declareVariable();
-		Object obj = new LunchMenu();
 	}
 
 	
