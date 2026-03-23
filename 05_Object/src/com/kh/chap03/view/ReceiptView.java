@@ -27,9 +27,26 @@ public class ReceiptView {
 		 * 2. 여러 자료형에 각각 여러개의 값을 보관 가능 + 기능
 		 */ 
 		
+		System.out.println("가격은 얼마인가요 >");
+		int price = sc.nextInt();
+		r.setPrice(price);
+		sc.nextLine();
 		
-		System.out.println(r.info());
+		System.out.println("결제수단은 무엇인가요 > >");
+		String payMent = sc.nextLine();
+		r.setPayment(payMent);
 		
+		System.out.println("상품명은 무엇인가요 >");
+		String place = sc.nextLine();
+		r.setPlace(place);
+		
+		System.out.println("날짜는 며칠인가요 >");
+		String date = sc.nextLine();
+		r.setDate(date);
+		
+		
+		
+		// 메소드 호출부에서 메소드를 호출하면서 넘길 수 있는 것은 오로지 '값'뿐.
 		
 		
 		

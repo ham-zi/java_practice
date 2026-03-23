@@ -5,7 +5,7 @@ public class Receipt {
 	
 	
 	private int price;
-	private String place;
+	private String product;
 	private String payment;
 	private String date;
 	// 날짜를 저장할 수 있는 JDK에서 제공되는 클래스가 있다.
@@ -16,11 +16,11 @@ public class Receipt {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public String getPlace() {
-		return place;
+	public String getproduct() {
+		return product;
 	}
 	public void setPlace(String place) {
-		this.place = place;
+		this.product= place;
 	}
 	public String getPayment() {
 		return payment;
@@ -46,7 +46,7 @@ public class Receipt {
 	
 	
 	public String info() {
-		String info = " 상품명 : " +  place
+		String info = " 상품명 : " +  product
 					+ "\n 금액 : " + price
 					+ "\n 결제수단 : " +payment
 					+ "\n 결제일시 :" + date;
