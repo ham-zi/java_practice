@@ -9,11 +9,15 @@
     <fullyQualifiedTypeName name="java.util.Arrays"/>
     <fullyQualifiedTypeName name="com.kh.chap04.controller.FieldController"/>
     <fullyQualifiedTypeName name="ui.Ui"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="com.kh.chap03.medel.vo.WebToon"/>
     <fullyQualifiedTypeName name="com.kh.chap01.model.vo.Child2"/>
     <fullyQualifiedTypeName name="org.w3c.dom.ls.LSOutput"/>
     <fullyQualifiedTypeName name="com.kh.vips.model.vo.MainPartChef"/>
     <fullyQualifiedTypeName name="com.kh.chap03.model.vo.SaladChef"/>
     <fullyQualifiedTypeName name="com.kh.chap03.controller.Cooking"/>
+    <fullyQualifiedTypeName name="com.kh.chap05.model.service.SoupFilter"/>
+    <fullyQualifiedTypeName name="com.kh.chap05.model.vo.Soup"/>
+    <fullyQualifiedTypeName name="com.kh.controller.UncheckedException"/>
+    <fullyQualifiedTypeName name="java.lang.StringIndexOutOfBoundsException"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
 </qualifiedTypeNameHistroy>
