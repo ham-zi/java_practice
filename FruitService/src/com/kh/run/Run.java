@@ -1,9 +1,12 @@
 package com.kh.run;
 
+import com.kh.view.FruitView;
+
 public class Run {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		new FruitView().menu();
+		
 
 	}
 

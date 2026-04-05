@@ -4,7 +4,6 @@
     <fullyQualifiedTypeName name="com.animals.Animal"/>
     <fullyQualifiedTypeName name="com.kh.operator.controller.OperatorController"/>
     <fullyQualifiedTypeName name="java.util.Objects"/>
-    <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="com.kh.chap04.controller.FieldController"/>
     <fullyQualifiedTypeName name="ui.Ui"/>
@@ -17,7 +16,6 @@
     <fullyQualifiedTypeName name="com.kh.chap05.model.service.SoupFilter"/>
     <fullyQualifiedTypeName name="com.kh.chap05.model.vo.Soup"/>
     <fullyQualifiedTypeName name="com.kh.controller.UncheckedException"/>
-    <fullyQualifiedTypeName name="java.lang.StringIndexOutOfBoundsException"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="com.kh.sw.controller.SwitchController"/>
     <fullyQualifiedTypeName name="java.util.Arrays"/>
@@ -26,7 +24,9 @@
     <fullyQualifiedTypeName name="com.kh.football.model.dao.MemoryFootballPlayerDao"/>
     <fullyQualifiedTypeName name="com.kh.football.functional.model.service.BinFilter"/>
     <fullyQualifiedTypeName name="java.util.function.Consumer"/>
-    <fullyQualifiedTypeName name="java.util.stream.Collectors"/>
     <fullyQualifiedTypeName name="com.kh.football.model.dao.FootballPlayerDao"/>
     <fullyQualifiedTypeName name="javax.sql.rowset.serial.SQLOutputImpl"/>
+    <fullyQualifiedTypeName name="java.util.stream.Collectors"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="java.lang.StringIndexOutOfBoundsException"/>
 </qualifiedTypeNameHistroy>
