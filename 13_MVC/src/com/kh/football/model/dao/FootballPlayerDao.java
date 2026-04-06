@@ -6,12 +6,11 @@ import com.kh.football.model.dto.FootballPlayerDto;
 import com.kh.football.model.vo.FootballPlayer;
 
 public interface FootballPlayerDao {
+	public void createFootballPlayer(FootballPlayer fp);
 	public List<FootballPlayer> getList();
-	public FootballPlayer findPlayer(int id);
-	public void deletePlayer(int id);
+	public FootballPlayer getPlayer(int id);
 	public FootballPlayer getPlayer(FootballPlayerDto fpd);
-	public void addPlayer(FootballPlayer fp);
-	public FootballPlayer findById(int id);
+	public void deletePlayer(int id);
 	public int getIndex(int id);
 	public void setPlayer(int index, FootballPlayer player);
 }

@@ -2,13 +2,14 @@ package com.kh.football.model.service;
 
 import java.util.List;
 
+import com.kh.football.custumException.PlayerNotFoundException;
 import com.kh.football.model.dao.FileFootballPlayerDao;
 import com.kh.football.model.dao.FootballPlayerDao;
 import com.kh.football.model.dto.FootballPlayerDto;
 import com.kh.football.model.vo.FootballPlayer;
 import com.kh.football.model.vo.Position;
 
-//축구선수 저장된것으로 서비스
+
 public class FootballService {
 
 	public FootballPlayerDao dao;
@@ -17,20 +18,26 @@ public class FootballService {
 		this.dao = dao;
 	}
 
-	public List<FootballPlayer> findPlayerList() {
-		return dao.getList();
+	
+
+	public FootballPlayer createFootballPlayer(FootballPlayerDto fpd) {
+		FootballPlayer fp = new FootballPlayer(fpd.getName(), Position.from(fpd.getPosition()), fpd.getBackNumber());
+		dao.createFootballPlayer(fp);
+		return fp;
 	}
 
-	public FootballPlayer addPlayer(FootballPlayerDto fpd) {
-		FootballPlayer fp = new FootballPlayer(fpd.getName(), Position.from(fpd.getPosition()), fpd.getBackNumber());
-		dao.addPlayer(fp);
-		return fp;
+	public List<FootballPlayer> findFootballPlayers() {
+		List<FootballPlayer> players = dao.getList();
+		if(players.isEmpty()) {
+			throw new PlayerNotFoundException("선수없음"); 
+		}
+		return players;
 	}
 
 	public void updatePlayer(int id, FootballPlayerDto fpd) {
 		int index = dao.getIndex(id);
 		if(index == -1) {
-			throw new IllegalArgumentException("존재하지 않는 id입니다.");
+			throw new PlayerNotFoundException("존재하지 않는 id입니다.");
 		}else {
 			FootballPlayer newPlayer = new FootballPlayer(id, fpd.getName(), Position.from(fpd.getPosition()), fpd.getBackNumber());
 			dao.setPlayer(index, newPlayer);
@@ -42,15 +49,11 @@ public class FootballService {
 
 	}
 
-	public FootballPlayer requestPlayer(FootballPlayerDto fpd) {
+	public FootballPlayer makeFootballPlayerDto(FootballPlayerDto fpd) {
 		return dao.getPlayer(fpd);
 	}
-	
-	public boolean findById(int id) {
-		return dao.findById(id) != null;
-	}
 
-	public void outputFootballPlayer() {
+	public void toFileFootballPlayer() {
 		List<FootballPlayer>list = dao.getList();
 		new FileFootballPlayerDao().outputFootballPlayer(list);
 		

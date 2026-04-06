@@ -1,15 +1,11 @@
 package com.kh.football.model.dao;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-
-import com.kh.football.model.dto.BoardDto;
 import com.kh.football.model.vo.Board;
 
 public class MemoryBoardDao implements BoardDao{
-	private List<Board> boards = new ArrayList();
+	private List<Board> boards = new ArrayList<>();
 
 	{
 		boards.add(new Board("첫 글입니다", "재밌다", "괸리자", "1234"));

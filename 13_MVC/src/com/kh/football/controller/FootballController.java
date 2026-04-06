@@ -7,63 +7,54 @@ import com.kh.football.model.service.FootballService;
 import com.kh.football.model.service.SelectService;
 import com.kh.football.model.vo.FootballPlayer;
 
-// View와 model사이에서 제어
 public class FootballController {
 	FootballService fs;
 	SelectService ss;
-	
 	
 	public FootballController(FootballService fs, SelectService ss) {
 		this.fs = fs;
 		this.ss = ss;
 	}
 	
-	public List<FootballPlayer> requestPlayerList() {
-		return fs.findPlayerList();
+	public FootballPlayer createFootballPlayer(FootballPlayerDto fpd) {
+		return fs.createFootballPlayer(fpd);
+	}
+
+	public List<FootballPlayer> findFootballPlayers() {
+		return fs.findFootballPlayers();
 	}
 	
-	//추가
-	public FootballPlayer requestAddPlayer(FootballPlayerDto fpd) {
-		return fs.addPlayer(fpd);
+	public List<FootballPlayer> findByName(String name){
+		return ss.findByName(name);
 	}
 	
-	//수정
-	public void requestUpdatePlayer(int id, FootballPlayerDto fpd) {
-		fs.updatePlayer(id,fpd);
+	public List<FootballPlayer> findByPosition(String position){
+		return ss.findByPosition(position);
 	}
 	
-	public void requestDeletePlayer(int id) {
-		fs.deletePlayer(id);
-	}
-	
-	public FootballPlayer requestPlayer(FootballPlayerDto fpd) {
-		return fs.requestPlayer(fpd);
-	}
-	
-	public boolean findById(int id) {
-		return fs.findById(id);
-	}
-	
-	//검색
-	
-	public List<FootballPlayer> equalsNameSelect(String name){
-		return ss.equalsNameSelect(name);
-	}
-	
-	public List<FootballPlayer> equalsPositionSelect(String position){
-		return ss.equalsPositionSelect(position);
-	}
-	
-	public List<FootballPlayer> equalsBackNumberSelect(int backNumber) {
-		return ss.equalsBackNumberSelect(backNumber);
-	}
-	
-	public void outputFootballPlayer() {
-		fs.outputFootballPlayer();
+	public List<FootballPlayer> findByBackNumber(int backNumber) {
+		return ss.findByBackNumber(backNumber);
 	}
 	
 	public List<FootballPlayer> findByNameAndPosition(String name,String position) {
 		return ss.findByNameAndPosition(name, position);
 	}
 	
+	
+	public void updateFootballPlayer(int id, FootballPlayerDto fpd) {
+		fs.updatePlayer(id,fpd);
+	}
+	
+	public void deleteFootballPlayer(int id) {
+		fs.deletePlayer(id);
+	}
+
+	public FootballPlayer makeFootballPlayerDto(FootballPlayerDto fpd) {
+		return fs.makeFootballPlayerDto(fpd);
+	}
+	
+
+	public void toFileFootballPlayer() {
+		fs.toFileFootballPlayer();
+	}
 }
