@@ -6,6 +6,7 @@ import com.kh.football.model.dao.FileFootballPlayerDao;
 import com.kh.football.model.dao.FootballPlayerDao;
 import com.kh.football.model.dto.FootballPlayerDto;
 import com.kh.football.model.vo.FootballPlayer;
+import com.kh.football.model.vo.Position;
 
 //축구선수 저장된것으로 서비스
 public class FootballService {
@@ -21,8 +22,7 @@ public class FootballService {
 	}
 
 	public FootballPlayer addPlayer(FootballPlayerDto fpd) {
-
-		FootballPlayer fp = new FootballPlayer(fpd.getName(), fpd.getPosition(), fpd.getBackNumber());
+		FootballPlayer fp = new FootballPlayer(fpd.getName(), Position.from(fpd.getPosition()), fpd.getBackNumber());
 		dao.addPlayer(fp);
 		return fp;
 	}
@@ -30,13 +30,10 @@ public class FootballService {
 	public void updatePlayer(int id, FootballPlayerDto fpd) {
 		int index = dao.getIndex(id);
 		if(index == -1) {
-			throw new IllegalArgumentException();
-		}
-		if (fpd != null) { // null 나올수 있음
-			FootballPlayer newPlayer = new FootballPlayer(id, fpd.getName(), fpd.getPosition(), fpd.getBackNumber());
+			throw new IllegalArgumentException("존재하지 않는 id입니다.");
+		}else {
+			FootballPlayer newPlayer = new FootballPlayer(id, fpd.getName(), Position.from(fpd.getPosition()), fpd.getBackNumber());
 			dao.setPlayer(index, newPlayer);
-		} else {
-			throw new IllegalArgumentException("수정된 선수 정보 입력 오류");
 		}
 	}
 

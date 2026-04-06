@@ -85,14 +85,16 @@ public class FootballView {
 			case 5:
 				System.out.println("축구선수 검색하기");
 				selectPlayer();
+				break;
 			case 6:
 				System.out.println("선수 파일출력하기");
 				fc.outputFootballPlayer();
+				break;
 			case 7:	
 				System.out.println("축구 게시판");
 				selectAll();
 				bv.boardMenu();
-				
+				break;
 			default:
 				System.out.println("없는 메뉴입니다. 다시 선택해주세요.");
 				break;
@@ -354,9 +356,4 @@ public class FootballView {
 	}
 }
 
-/// 3개의 값을 넘기는데 너무 번거롭다
-/*
- * 1. FootballPlayer Vo 탈락 => 생성자 인자값 부족 2. ArrayList 0 => 인덱스를 알아야함 3. HashMap
- * => 벨류가 String String int or String Object << Object가 안좋다 4. Class를 만든다.
- * 
- */
+

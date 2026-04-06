@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import com.kh.football.model.dao.FootballPlayerDao;
 import com.kh.football.model.dao.MemoryFootballPlayerDao;
 import com.kh.football.model.vo.FootballPlayer;
+import com.kh.football.model.vo.Position;
 
 public class SelectService {
 	
@@ -38,7 +39,7 @@ public class SelectService {
 	public List<FootballPlayer>equalsPositionSelect(String position) {
 		List<FootballPlayer> players = fpd.getList();
 		List<FootballPlayer> eName = players.stream()
-											.filter(p -> p.getPosition().equals(position))
+											.filter(p -> p.getPosition() == Position.from(position))
 											.toList();
 		return eName;
 	}
@@ -47,8 +48,8 @@ public class SelectService {
 	public List<FootballPlayer> findByNameAndPosition(String name, String position) {
 		List<FootballPlayer>players = fpd.getList();
 		List<FootballPlayer> findPlayers = players.stream()
-												  .filter(player -> player.getName().equals(name))
-												  .filter(player -> player.getPosition().equals(position))
+												  .filter(player -> player.getName().contains(name))
+												  .filter(player -> player.getPosition() == Position.from(position))
 												  .collect(Collectors.toList());
 		return findPlayers;
 		
@@ -66,37 +67,6 @@ public class SelectService {
 		return bNums;
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 

@@ -1,4 +1,4 @@
-package com.kh.dao;
+package com.kh.model.dao;
 
 import java.io.FileWriter;
 import java.io.IOException;

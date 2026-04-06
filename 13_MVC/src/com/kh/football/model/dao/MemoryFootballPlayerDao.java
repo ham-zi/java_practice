@@ -6,6 +6,7 @@ import java.util.List;
 import com.kh.football.custumException.BookNotFoundException;
 import com.kh.football.model.dto.FootballPlayerDto;
 import com.kh.football.model.vo.FootballPlayer;
+import com.kh.football.model.vo.Position;
 
 public class MemoryFootballPlayerDao implements FootballPlayerDao {
 	private List<FootballPlayer> players = new ArrayList<>();
@@ -13,9 +14,9 @@ public class MemoryFootballPlayerDao implements FootballPlayerDao {
 
 	
 	{
-		players.add(new FootballPlayer("손흥민", "공격수", 7));
-		players.add(new FootballPlayer("호날두", "공격수", 7));
-		players.add(new FootballPlayer("메시", "미드필드", 10));
+		players.add(new FootballPlayer("손흥민",Position.STRICKER, 7));
+		players.add(new FootballPlayer("호날두",Position.STRICKER, 7));
+		players.add(new FootballPlayer("메시", Position.MIDFIELDER, 10));
 
 		//초기화블럭
 		

@@ -63,10 +63,7 @@ public class FruitView {
 		System.out.println("======상품 전체 조회======");
 		List<FruitBox> list = fc.selectAll();
 		if (!(list.isEmpty())) {
-			list.stream()
-					.map(f -> "[상품번호:" + f.getProductId() + ", 과일:" + f.getFruitName() + ", 당도:" + f.getFruitBrix()
-							+ ", 과일개수:" + f.getFruitStock() + ", 상품가격:" + f.getProductPrice() + "]")
-					.forEach(System.out::println);
+			listInfo(list);
 			System.out.println("======================");
 		} else {
 			System.out.println("상품이 존재하지 않습니다.");
@@ -91,73 +88,16 @@ public class FruitView {
 				switch(menuNo) {
 				
 					case "1" : 
-						System.out.println("======과일 이름 검색======");
-						System.out.print("과일 이름 >");
-						String name = sc.nextLine();
-						List<FruitBox>names = fc.findByName(name);
-						if(names.isEmpty()) {
-							System.out.println("해당 조건에 존재하는 상품이 없습니다.");
-						} else {
-							names.stream()
-								 .map(f -> "[상품번호:" + f.getProductId() + ", 과일:" + f.getFruitName() + ", 당도:" + f.getFruitBrix()
-								 		+ ", 과일개수:" + f.getFruitStock() + ", 상품가격:" + f.getProductPrice() + "]")
-								 .forEach(System.out::println);
-						}
-						System.out.println("======================");
+						findByName();
 						break;
-						
 					case "2" : 
-						System.out.println("======당도 범위 검색======");
-						System.out.print("lowBrix >");
-						double lowBrix = sc.nextDouble();
-						System.out.print("highBrix>");
-						double highBrix = sc.nextDouble();
-						sc.nextLine();
-						List<FruitBox>brix = fc.findByBrix(lowBrix, highBrix);
-						if(brix.isEmpty()) {
-							System.out.println("해당 조건에 존재하는 상품이 없습니다.");
-						}else {
-							brix.stream()
-								 .map(f -> "[상품번호:" + f.getProductId() + ", 과일:" + f.getFruitName() + ", 당도:" + f.getFruitBrix()
-								 		+ ", 과일개수:" + f.getFruitStock() + ", 상품가격:" + f.getProductPrice() + "]")
-								 .forEach(System.out::println);
-						}
-						System.out.println("======================");
+						findByBrix();
 						break;
 					case "3" : 
-						System.out.println("======가격 범위 검색======");
-						System.out.print("lowPrice >");
-						int lowPrice = sc.nextInt();
-						System.out.print("highPrice>");
-						int highPrice = sc.nextInt();
-						sc.nextLine();
-						List<FruitBox>price = fc.findByPrice(lowPrice, highPrice);
-						if(price.isEmpty()) {
-							System.out.println("해당 조건에 존재하는 상품이 없습니다.");
-						}else {
-							price.stream()
-								 .map(f -> "[상품번호:" + f.getProductId() + ", 과일:" + f.getFruitName() + ", 당도:" + f.getFruitBrix()
-								 		+ ", 과일개수:" + f.getFruitStock() + ", 상품가격:" + f.getProductPrice() + "]")
-								 .forEach(System.out::println);
-						}
-						System.out.println("======================");
+						findByPrice();
 						break;
 					case "4" :
-						System.out.println("======개수 범위 검색======");
-						System.out.print("lowStock >");
-						int lowStock = sc.nextInt();
-						System.out.print("highStock>");
-						int highStock = sc.nextInt();
-						sc.nextLine();
-						List<FruitBox>stock = fc.findByStock(lowStock, highStock);
-						if(stock.isEmpty()) {
-							System.out.println("해당 조건에 존재하는 상품이 없습니다.");
-						}else {
-							stock.stream()
-								 .map(f -> "[상품번호:" + f.getProductId() + ", 과일:" + f.getFruitName() + ", 당도:" + f.getFruitBrix()
-								 		+ ", 과일개수:" + f.getFruitStock() + ", 상품가격:" + f.getProductPrice() + "]")
-								 .forEach(System.out::println);
-						}
+						findByStock();
 						break;
 					case "5" : 
 						return;
@@ -171,6 +111,78 @@ public class FruitView {
 		}
 		
 	}
+	
+	
+	private void findByName() {
+		System.out.println("======과일 이름 검색======");
+		System.out.print("과일 이름 >");
+		String name = sc.nextLine();
+		List<FruitBox>names = fc.findByName(name);
+		if(names.isEmpty()) {
+			System.out.println("해당 조건에 존재하는 상품이 없습니다.");
+		} else {
+			listInfo(names);
+		}
+		System.out.println("======================");
+	}
+	
+	private void findByBrix() {
+		System.out.println("======당도 범위 검색======");
+		System.out.print("lowBrix >");
+		double lowBrix = sc.nextDouble();
+		System.out.print("highBrix>");
+		double highBrix = sc.nextDouble();
+		sc.nextLine();
+		List<FruitBox>brix = fc.findByBrix(lowBrix, highBrix);
+		if(brix.isEmpty()) {
+			System.out.println("해당 조건에 존재하는 상품이 없습니다.");
+		}else {
+			listInfo(brix);
+		}
+		System.out.println("======================");
+		
+	}
+	
+	private void findByPrice() {
+		System.out.println("======가격 범위 검색======");
+		System.out.print("lowPrice >");
+		int lowPrice = sc.nextInt();
+		System.out.print("highPrice>");
+		int highPrice = sc.nextInt();
+		sc.nextLine();
+		List<FruitBox>price = fc.findByPrice(lowPrice, highPrice);
+		if(price.isEmpty()) {
+			System.out.println("해당 조건에 존재하는 상품이 없습니다.");
+		}else {
+			listInfo(price);
+		}
+		System.out.println("======================");
+	}
+	
+	private void findByStock() {
+		System.out.println("======개수 범위 검색======");
+		System.out.print("lowStock >");
+		int lowStock = sc.nextInt();
+		System.out.print("highStock>");
+		int highStock = sc.nextInt();
+		sc.nextLine();
+		List<FruitBox>stock = fc.findByStock(lowStock, highStock);
+		if(stock.isEmpty()) {
+			System.out.println("해당 조건에 존재하는 상품이 없습니다.");
+		}else {
+			listInfo(stock);
+		}
+		System.out.println("======================");
+
+	}
+	
+	private void listInfo(List<FruitBox>list) {
+		list.stream()
+		 .map(f -> "[상품번호:" + f.getProductId() + ", 과일:" + f.getFruitName() + ", 당도:" + f.getFruitBrix()
+	 		+ ", 과일개수:" + f.getFruitStock() + ", 상품가격:" + f.getProductPrice() + "]")
+	 .forEach(System.out::println);
+	}
+	
 
 	private void createFruitBox() {
 

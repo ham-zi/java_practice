@@ -15,7 +15,13 @@ public class Board {
 	public Board(String boardTitle, String boardContent, String boardWriter, String password) 
 	{
 		if(boardTitle.isBlank()) {
-			throw new IllegalArgumentException("타이틀");
+			throw new IllegalArgumentException("타이틀공백오류");
+		}
+		if(boardWriter.isBlank()) {
+			throw new IllegalArgumentException("글쓴이공백오류");
+		}
+		if(password.isBlank()) {
+			throw new IllegalArgumentException("비밀번호공백오류");
 		}
 		
 		this.boardNo = ++num;
