@@ -1,5 +1,6 @@
 package com.kh.model.service;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,10 +21,10 @@ public class FruitService {
 	}
 	
 	public FruitBox createFruitBox(FruitBoxDto dto) {
-		if(isId(dto.getProductId()) != null) {
-			FruitBox fruitbox = new FruitBox(dto.getProductId(), dto.getFruitName(), dto.getFruitBrix(), dto.getFruitStock(), dto.getProductPrice());
-			fruitBoxes.add(fruitbox);
-			return fruitbox;
+		if(isId(dto.getProductId()) == null) {
+			FruitBox fruitBox = new FruitBox(dto.getProductId(), dto.getFruitName(), dto.getFruitBrix(), dto.getFruitStock(), dto.getProductPrice());
+			fruitBoxes.add(fruitBox);
+			return fruitBox;
 		} else {
 			return null;
 		}
@@ -35,28 +36,31 @@ public class FruitService {
 	
 	public List<FruitBox> findByName(String Name) {
 		List<FruitBox>list = fruitBoxes.stream()
-				  .filter(f -> f.getFruitName().equals(Name))
+				  .filter(f -> f.getFruitName().contains(Name))
 				  .toList();
 		return list;
 	}
 	
-	public List<FruitBox> findByBrix(double brix) {
+	public List<FruitBox> findByBrix(double lowBrix, double highBrix) {
 		List<FruitBox>list = fruitBoxes.stream()
-				  .filter(f -> f.getFruitBrix() == brix)
+				  .filter(f -> f.getFruitBrix() >= lowBrix)
+				  .filter(f -> f.getFruitBrix() <= highBrix)
 				  .toList();
 		return list;		
 	}
 	
-	public List<FruitBox> findByPrice(int price) {
+	public List<FruitBox> findByPrice(int lowPrice, int highPrice) {
 		List<FruitBox>list = fruitBoxes.stream()
-				  .filter(f -> f.getProductPrice() == price)
+				  .filter(f -> f.getProductPrice() >= lowPrice)
+				  .filter(f -> f.getProductPrice() <= highPrice)
 				  .toList();
 		return list;
 	}
 	
-	public List<FruitBox> findByStock(int stock) {
+	public List<FruitBox> findByStock(int lowStock, int highStock) {
 		List<FruitBox>list = fruitBoxes.stream()
-				.filter(f -> f.getFruitStock() == stock)
+				.filter(f -> f.getFruitStock() >= lowStock)
+				.filter(f -> f.getFruitStock() <= highStock)
 				.toList();
 		return list;		
 	}

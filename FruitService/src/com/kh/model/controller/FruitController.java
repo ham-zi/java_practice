@@ -22,16 +22,16 @@ public class FruitController {
 		return fs.findByName(Name);
 	}
 	
-	public List<FruitBox> findByBrix(double brix) {
-		return fs.findByBrix(brix);
+	public List<FruitBox> findByBrix(double lowBrix, double highBrix) {
+		return fs.findByBrix(lowBrix, highBrix);
 	}
 	
-	public List<FruitBox> findByPrice(int price) {
-		return fs.findByPrice(price);
+	public List<FruitBox> findByPrice(int lowPrice, int highPrice) {
+		return fs.findByPrice(lowPrice, highPrice);
 	}
 	
-	public List<FruitBox> findByStock(int stock){
-		return fs.findByStock(stock);
+	public List<FruitBox> findByStock(int lowStock, int highStock){
+		return fs.findByStock(lowStock, highStock);
 	}
 	
 	public FruitBox updateFruitBox(FruitBoxDto dto) {
