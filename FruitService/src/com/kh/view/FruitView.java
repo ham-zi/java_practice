@@ -46,6 +46,7 @@ public class FruitView {
 				deleteFruitBox();
 				break;
 			case "6":
+				fc.outputFruitBoxes();
 				break;
 			case "7":
 				sc.close();
@@ -264,5 +265,8 @@ public class FruitView {
 			System.out.println("관리자에게 문의하십시오.");
 		}
 	}
+	
+	
+	
 	
 }

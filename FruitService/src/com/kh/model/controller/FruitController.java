@@ -45,4 +45,8 @@ public class FruitController {
 	public FruitBox isId(String id) {
 		return fs.isId(id);
 	}
+	
+	public void outputFruitBoxes() {
+		fs.outputFruitBoxes();
+	}
 }

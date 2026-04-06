@@ -4,11 +4,12 @@ import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.kh.dao.FileFruitBox;
 import com.kh.model.dto.FruitBoxDto;
 import com.kh.model.vo.FruitBox;
 
 public class FruitService {
-	
+	private FileFruitBox fb = new FileFruitBox();
 	private List<FruitBox>fruitBoxes = new ArrayList<>();
 	
 	{
@@ -104,6 +105,11 @@ public class FruitService {
 				  .findFirst()
 				  .orElse(null);
 		return fruitBox;
+	}
+	
+	
+	public void outputFruitBoxes() {
+		fb.outputFruitBoxes(fruitBoxes);
 	}
 	
 }
