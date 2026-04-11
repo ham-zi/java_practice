@@ -1,8 +1,8 @@
-package com.kh.model.dao;
+package com.kh.model.dto;
 
 import java.util.Date;
 
-public class BoardDao {
+public class BoardDto {
 	
 	private String boardId;
 	private String userNo;
@@ -11,7 +11,7 @@ public class BoardDao {
 	private Date writedDate;
 	
 	
-	public BoardDao(String boardId, String userNo, String title, String content, Date writedDate) {
+	public BoardDto(String boardId, String userNo, String title, String content, Date writedDate) {
 		super();
 		this.boardId = boardId;
 		this.userNo = userNo;

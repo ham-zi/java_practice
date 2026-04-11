@@ -1,19 +1,25 @@
 package com.kh.view;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
+
 import com.kh.controller.BoardController;
+import com.kh.controller.UserController;
+import com.kh.exception.ExistIdException;
+import com.kh.exception.ExistNumberException;
+import com.kh.model.dto.UserDto;
 import com.kh.model.vo.User;
 
 public class BoardView {
 	BoardController bc = new BoardController();
-	
+	UserController uc = new UserController();
+	Scanner sc = new Scanner(System.in);
 	public void mainMenu() {
-		Scanner sc = new Scanner(System.in);
 		
 		User user = loginMenu(sc);
 		if(user != null) {
-			boardMenu(sc, user);
+		boardMenu(sc, user);
 		}
 	}
 	
@@ -34,7 +40,10 @@ public class BoardView {
 			switch(menuNum) {
 			case "1" : 
 				user = login();
+				if(user != null) {
 				return user;
+				}
+				break;
 			case "2" :
 				createUser();
 				break;
@@ -49,6 +58,7 @@ public class BoardView {
 	public void boardMenu(Scanner sc, User user) {
 		while(true) {
 			System.out.println("===================");
+			System.out.println(user.getUserName()+"님 어서오세요,");
 			System.out.println("게시판 서비스입니다.");
 			System.out.println("1 : 게시판 전체 목록");
 			System.out.println("2 : 게시판 목록 검색");
@@ -86,10 +96,60 @@ public class BoardView {
 	}
 	
 	private User login() {
-		
+		System.out.println("로그인 서비스");
+		System.out.print("아이디 입력 >");
+		String id = sc.nextLine();
+		System.out.print("비밀번호 입력 >");
+		String pw = sc.nextLine();
+		User user = uc.login(id, pw);
+		if(user!=null) {
+			return user;
+		}
+		System.out.println("ID 혹은 PW 잘못입력하셨습니다.");
+		return null;
 	}
 	
 	private void createUser() {
+		System.out.println("회원가입 서비스");
+		System.out.print("회원번호 입력 >");
+		int num=0;
+		try {
+		num = sc.nextInt();
+		sc.nextLine();
+		} catch (InputMismatchException e) {
+			System.out.println("회원번호는 숫자를 입력하세요.");
+			sc.nextLine();
+			return;
+		}
+
+		System.out.print("회원이름 입력 >");
+		String name = sc.nextLine();
+		System.out.print("아이디 입력 >");
+		String id = sc.nextLine();
+		System.out.print("비밀번호 입력 >");
+		String pw = sc.nextLine();
+		
+		if(num<=0) {
+			System.out.println("1이상의 숫자를 입력해주세요.");
+			return;
+		}
+		if(name.isBlank() || id.isBlank() || pw.isBlank()) {
+			System.out.println("정보를 꼭 입력하세요.");
+			return;
+		}
+		
+		UserDto dto = new UserDto(num, id, pw, name);
+		//ene, eie 에러처리
+		try {
+		uc.createUser(dto);
+		} catch (ExistIdException e) {
+			System.out.println("ID중복입니다.");
+			return;
+		} catch (ExistNumberException e) {
+			System.out.println("회원번호중복입니다.");
+			return;
+		}
+		System.out.println("회원 가입에 성공하셨습니다.");
 		
 	}
 	

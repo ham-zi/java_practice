@@ -1,11 +1,11 @@
-package com.kh.model.dao;
+package com.kh.model.dto;
 
-public class UserDao {
+public class UserDto {
 	private int userNo;
 	private String userId;
 	private String userPw;
 	private String userName;
-	public UserDao(int userNo, String userId, String userPw, String userName) {
+	public UserDto(int userNo, String userId, String userPw, String userName) {
 		super();
 		this.userNo = userNo;
 		this.userId = userId;
