@@ -6,12 +6,12 @@ import java.util.Date;
 public class Board {
 	
 	private final String boardId;
-	private final String userNo;
+	private final int userNo;
 	private final String title;
 	private final String content;
 	private final String writedDate;
 	
-	public Board(String boardId, String userNo, String title, String content) {
+	public Board(String boardId, int userNo, String title, String content) {
 		super();
 		this.boardId = boardId;
 		this.userNo = userNo;
@@ -23,7 +23,7 @@ public class Board {
 	public String getBoardId() {
 		return boardId;
 	}
-	public String getUserNo() {
+	public int getUserNo() {
 		return userNo;
 	}
 	public String getTitle() {

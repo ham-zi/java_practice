@@ -1,23 +1,24 @@
 package com.kh.model.dto;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class BoardDto {
 	
 	private String boardId;
-	private String userNo;
+	private int userNo;
 	private String title;
 	private String content;
-	private Date writedDate;
+	private String writedDate;
 	
 	
-	public BoardDto(String boardId, String userNo, String title, String content, Date writedDate) {
+	public BoardDto(String boardId, int userNo, String title, String content) {
 		super();
 		this.boardId = boardId;
 		this.userNo = userNo;
 		this.title = title;
 		this.content = content;
-		this.writedDate = writedDate;
+		this.writedDate = new SimpleDateFormat("yyyy/MM/dd").format(new Date());
 	}
 	
 	
@@ -27,12 +28,10 @@ public class BoardDto {
 	public void setBoardId(String boardId) {
 		this.boardId = boardId;
 	}
-	public String getUserNo() {
+	public int getUserNo() {
 		return userNo;
 	}
-	public void setUserNo(String userNo) {
-		this.userNo = userNo;
-	}
+
 	public String getTitle() {
 		return title;
 	}
@@ -45,12 +44,10 @@ public class BoardDto {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Date getWritedDate() {
+	public String getWritedDate() {
 		return writedDate;
 	}
-	public void setWritedDate(Date writedDate) {
-		this.writedDate = writedDate;
-	}
+
 	
 
 }
