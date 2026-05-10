@@ -1,1 +1,29 @@
-/.metadata/
+# --- OS 특정 파일 ---
+.DS_Store
+Thumbs.db
+
+# --- 이클립스 관련 (개인 설정이라 공유 안 하는 게 매너) ---
+.metadata/
+.settings/
+.project
+.classpath
+*.tmp
+*.bak
+*.swp
+*~
+.loadpath
+
+# --- 빌드 결과물 (서버가 실행하면서 만드는 파일들) ---
+bin/
+build/
+target/
+.deployables/
+.wtpmodules/
+
+# --- 라이브러리 (서버나 로컬 개발환경에 따라 다르므로 제외) ---
+# 만약 라이브러리를 직접 폴더에 넣었다면 예외 처리가 필요할 수도 있음
+# /webapp/WEB-INF/lib/*.jar 
+
+# --- 보안 (중요!) ---
+# DB 주소나 비밀번호가 적힌 설정 파일이 있다면 반드시 제외하세요.
+# 예: config/db.properties

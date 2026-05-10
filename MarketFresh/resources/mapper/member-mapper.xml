@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="memberMapper">
+  	<sql id="selectMember">
+  		SELECT
+  		       MEMBER_NO
+  		     , MEMBER_ID
+  		     , MEMBER_NAME
+  		     , EMAIL
+  		     , PHONE_NUMBER
+  		     , ADDRESS
+  		     , ENROLL_DATE
+  		     , MODIFY_DATE
+  		     , STATUS
+  		  FROM
+  		       MARKET_MEMBER
+  	</sql>
+  	<select id="availableMemberId" parameterType="string" resultType="member">
+  		<include refid="selectMember"/>
+  		WHERE
+  		      MEMBER_ID = #{memberId}
+  		  AND
+  		      STATUS = 'N'
+  	</select>
+  	
+  	<select id="login" parameterType="member" resultType="member">
+  		<include refid="selectMember"/>
+  		WHERE
+  			  MEMBER_ID = #{memberId}
+  		  AND
+  		      MEMBER_PWD = #{memberPwd}
+  		  AND
+  		      STATUS = 'N'
+  	</select>
+  
+  	<select id="findMemberByNo" parameterType="Long" resultType="member">
+		<include refid="selectMember"/>
+		WHERE
+		      MEMBER_NO = #{memberNo}
+		  AND
+  		      STATUS = 'N'
+  	</select>
+  
+  	<insert id="createMember" parameterType="member">
+  		INSERT
+  		  INTO
+  		       MARKET_MEMBER
+  		VALUES
+  		       (
+  		       SEQ_MEMBER_NO.NEXTVAL
+  		     , #{memberId}
+  		     , #{memberPwd}
+  		     , #{memberName}
+  		     , #{email}
+  		     , #{phoneNumber}
+  		     , #{address}
+  		     , SYSDATE
+  		     , SYSDATE
+  		     , 'N'
+  		       )
+  	</insert>
+  	
+  	
+  	<update id="updateMember" parameterType="member">
+  		UPDATE
+  		       MARKET_MEMBER
+  		   SET
+  		       EMAIL = #{email}
+  		     , PHONE_NUMBER = #{phoneNumber}
+  		     , ADDRESS = #{address}
+  		     , MODIFY_DATE = SYSDATE
+  		 WHERE
+  		       MEMBER_NO = #{memberNo}
+  		   AND
+  		       STATUS = 'N'
+  	</update>
+  	
+  	<update id="updatePwd" parameterType="pwd">
+  		UPDATE
+  		       MARKET_MEMBER
+  		   SET
+  		       MEMBER_PWD = #{changePwd}
+  		     , MODIFY_DATE = SYSDATE
+  		 WHERE
+  		       MEMBER_NO = #{memberNo}
+  		   AND
+  		       MEMBER_PWD = #{currentPwd}
+  		   AND
+  		       STATUS = 'N'  
+  	</update>
+  	
+  	<update id="softDeleteMember" parameterType="member">
+  		UPDATE
+  		       MARKET_MEMBER
+  		   SET
+  		       STATUS = 'Y'
+  		 WHERE
+  		       MEMBER_NO = #{memberNo}
+  		   AND
+  		       MEMBER_PWD = #{memberPwd}
+  		   AND
+  		       STATUS = 'N'
+  	</update>
+  	
+  </mapper>
